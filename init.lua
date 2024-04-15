@@ -159,7 +159,7 @@ vim.o.inccommand = 'split'
 vim.o.cursorline = true
 
 -- Minimal number of screen lines to keep above and below the cursor.
-vim.o.scrolloff = 10
+vim.o.scrolloff = 15
 
 -- if performing an operation that would fail due to unsaved changes in the buffer (like `:q`),
 -- instead raise a dialog asking if you wish to save the current file(s)
@@ -169,8 +169,21 @@ vim.o.confirm = true
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
 
+-- Save with CTRL+s
+vim.keymap.set({ 'i', 'n' }, '<C-s>', '<cmd>w<CR>')
+
+-- Easy tabs
+vim.keymap.set({ 'i', 'n' }, '<C-t>', '<cmd>:tabnew<CR>')
+vim.keymap.set('n', 'tc', '<cmd>:tabclose<CR>')
+vim.keymap.set('n', 'tn', '<cmd>:tabnext<CR>')
+vim.keymap.set('n', 'tp', '<cmd>:tabprev<CR>')
+vim.keymap.set('n', 'te', '<cmd>:tabedit<CR>')
+
 -- Clear highlights on search when pressing <Esc> in normal mode
---  See `:help hlsearch`
+-- See `:help hlsearch`
+
+-- Set highlight on search, but clear on pressing <Esc> in normal mode
+vim.opt.hlsearch = true
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 
 -- Diagnostic keymaps
@@ -247,7 +260,38 @@ rtp:prepend(lazypath)
 -- NOTE: Here is where you install your plugins.
 require('lazy').setup({
   -- NOTE: Plugins can be added with a link (or for a github repo: 'owner/repo' link).
-  'NMAC427/guess-indent.nvim', -- Detect tabstop and shiftwidth automatically
+
+  { -- fugitive git frontend
+    'tpope/vim-fugitive',
+    config = function()
+      vim.keymap.set('n', '<leader>ga', ':Git add -p<CR>')
+      vim.keymap.set('n', '<leader>gd', ':Gdiff<CR>')
+      vim.keymap.set('n', '<leader>gs', ':Git status<CR>')
+
+      vim.api.nvim_create_autocmd('BufWinEnter', {
+        desc = 'fugitive settings',
+        group = vim.api.nvim_create_augroup('_fugitive', {}),
+        pattern = '*',
+        callback = function()
+          if vim.bo.ft ~= 'fugitive' then
+            return
+          end
+
+          local bufnr = vim.api.nvim_get_current_buf()
+          local opts = { buffer = bufnr, remap = false }
+
+          -- pull
+          vim.keymap.set('n', '<leader>p', ':Git pull --rebase<CR>', opts)
+
+          -- push
+          vim.keymap.set('n', '<leader>P', ':Git push<CR>', opts)
+          vim.keymap.set('n', '<leader>Pu', ':Git push -u origin ', opts)
+        end,
+      })
+    end,
+  },
+
+  'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically
 
   -- NOTE: Plugins can also be added by using a table,
   -- with the first argument being the link and the following
@@ -428,6 +472,7 @@ require('lazy').setup({
       local builtin = require 'telescope.builtin'
       vim.keymap.set('n', '<leader>sh', builtin.help_tags, { desc = '[S]earch [H]elp' })
       vim.keymap.set('n', '<leader>sk', builtin.keymaps, { desc = '[S]earch [K]eymaps' })
+      vim.keymap.set('n', 'e', builtin.find_files, { desc = '[S]earch [F]iles' })
       vim.keymap.set('n', '<leader>sf', builtin.find_files, { desc = '[S]earch [F]iles' })
       vim.keymap.set('n', '<leader>ss', builtin.builtin, { desc = '[S]earch [S]elect Telescope' })
       vim.keymap.set('n', '<leader>sw', builtin.grep_string, { desc = '[S]earch current [W]ord' })
@@ -683,6 +728,21 @@ require('lazy').setup({
         -- But for many setups, the LSP (`ts_ls`) will work just fine
         -- ts_ls = {},
         --
+        clangd = {},
+        dockerls = {},
+        gopls = {},
+        helm_ls = {},
+        html = {},
+        intelephense = {}, -- PHP
+        jsonls = {},
+        ruff_lsp = {}, -- Python
+        rust_analyzer = {},
+        terraformls = {},
+        tsserver = {},
+        yamlls = {},
+        vimls = {},
+        zls = {}, -- Zig
+        zk = {}, -- Markdown
 
         lua_ls = {
           -- cmd = { ... },
@@ -896,6 +956,12 @@ require('lazy').setup({
       -- any other, such as 'tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'.
       vim.cmd.colorscheme 'tokyonight-night'
     end,
+  },
+  {
+    'mofiqul/vscode.nvim',
+  },
+  {
+    'projekt0n/github-nvim-theme',
   },
 
   -- Highlight todo, notes, etc in comments
