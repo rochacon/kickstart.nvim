@@ -2,4 +2,11 @@
 --  I promise not to create any merge conflicts in this directory :)
 --
 -- See the kickstart.nvim README for more information
+
+-- 
+-- vim.cmd.colorscheme 'rochacon'
+
+-- You can configure highlights by doing something like:
+-- vim.cmd.hi 'Comment gui=none'
+
 return {}
