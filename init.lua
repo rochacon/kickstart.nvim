@@ -265,6 +265,7 @@ require('lazy').setup({
     'tpope/vim-fugitive',
     config = function()
       vim.keymap.set('n', '<leader>ga', ':Git add -p<CR>')
+      vim.keymap.set('n', '<leader>gc', ':Git commit -s -S -v<CR>')
       vim.keymap.set('n', '<leader>gd', ':Gdiff<CR>')
       vim.keymap.set('n', '<leader>gs', ':Git status<CR>')
 
