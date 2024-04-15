@@ -254,27 +254,9 @@ require('lazy').setup({
       vim.keymap.set('n', '<leader>gc', ':Git commit -s -S -v<CR>')
       vim.keymap.set('n', '<leader>gd', ':Gdiff<CR>')
       vim.keymap.set('n', '<leader>gs', ':Git status<CR>')
-
-      vim.api.nvim_create_autocmd('BufWinEnter', {
-        desc = 'fugitive settings',
-        group = vim.api.nvim_create_augroup('_fugitive', {}),
-        pattern = '*',
-        callback = function()
-          if vim.bo.ft ~= 'fugitive' then
-            return
-          end
-
-          local bufnr = vim.api.nvim_get_current_buf()
-          local opts = { buffer = bufnr, remap = false }
-
-          -- pull
-          vim.keymap.set('n', '<leader>p', ':Git pull --rebase<CR>', opts)
-
-          -- push
-          vim.keymap.set('n', '<leader>P', ':Git push<CR>', opts)
-          vim.keymap.set('n', '<leader>Pu', ':Git push -u origin ', opts)
-        end,
-      })
+      vim.keymap.set('n', '<leader>p', ':Git pull --rebase<CR>')
+      vim.keymap.set('n', '<leader>P', ':Git push<CR>')
+      vim.keymap.set('n', '<leader>Pu', ':Git push -u origin ')
     end,
   },
 
