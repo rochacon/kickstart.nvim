@@ -108,3 +108,11 @@ hi SneakPluginScope term=NONE cterm=NONE ctermfg=NONE ctermbg=NONE gui=NONE guif
 hi SneakStreakMask term=NONE cterm=NONE ctermfg=black ctermbg=darkgreen gui=NONE guifg=black guibg=darkgreen
 hi SneakStreakStatusLine term=NONE cterm=NONE ctermfg=black ctermbg=darkgreen gui=NONE guifg=black guibg=darkgreen
 hi SneakStreakTarget term=NONE cterm=NONE ctermfg=black ctermbg=green gui=NONE guifg=black guibg=green
+
+" MiniStatusline
+hi MiniStatuslineModeNormal term=NONE cterm=NONE ctermfg=black ctermbg=fg gui=NONE guifg=fg guibg=#666666
+hi MiniStatuslineModeInsert term=NONE cterm=NONE ctermfg=black ctermbg=fg gui=NONE guifg=fg guibg=#666666
+hi MiniStatuslineModeVisual term=NONE cterm=NONE ctermfg=black ctermbg=fg gui=NONE guifg=fg guibg=#666666
+hi MiniStatuslineModeReplace term=NONE cterm=NONE ctermfg=black ctermbg=fg gui=NONE guifg=fg guibg=#666666
+hi MiniStatuslineModeCommand term=NONE cterm=NONE ctermfg=black ctermbg=fg gui=NONE guifg=fg guibg=#666666
+hi MiniStatuslineModeOther term=NONE cterm=NONE ctermfg=black ctermbg=fg gui=NONE guifg=fg guibg=#666666
