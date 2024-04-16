@@ -121,6 +121,10 @@ end)
 -- Enable break indent
 vim.o.breakindent = true
 
+-- Enable code folding
+vim.opt.foldmethod = 'indent'
+vim.opt.foldlevelstart = 4
+
 -- Save undo history
 vim.o.undofile = true
 
