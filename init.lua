@@ -98,6 +98,9 @@ vim.g.have_nerd_font = false
 -- NOTE: You can change these options as you wish!
 --  For more options, you can see `:help option-list`
 
+-- syntax highlighting
+vim.opt.syntax = 'on'
+
 -- Make line numbers default
 vim.o.number = true
 -- You can also add relative line numbers, to help with jumping.
@@ -155,6 +158,13 @@ vim.o.splitbelow = true
 --   and `:help lua-options-guide`
 -- vim.o.list = true
 -- vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
+
+-- trim whitespace
+vim.api.nvim_create_autocmd('BufWritePre', {
+  desc = 'trim whitespace',
+  group = vim.api.nvim_create_augroup('TrimWhitespace', { clear = true }),
+  command = [[%s/\s\+$//e]],
+})
 
 -- Preview substitutions live, as you type!
 vim.o.inccommand = 'split'
@@ -221,6 +231,10 @@ vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper win
 -- vim.keymap.set("n", "<C-S-l>", "<C-w>L", { desc = "Move window to the right" })
 -- vim.keymap.set("n", "<C-S-j>", "<C-w>J", { desc = "Move window to the lower" })
 -- vim.keymap.set("n", "<C-S-k>", "<C-w>K", { desc = "Move window to the upper" })
+
+-- PageUp and PageDown are centered
+vim.keymap.set({ 'n', 'v', 'i' }, '<PageDown>', '<PageDown>zz')
+vim.keymap.set({ 'n', 'v', 'i' }, '<PageUp>', '<PageUp>zz')
 
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
@@ -815,6 +829,8 @@ require('lazy').setup({
       end,
       formatters_by_ft = {
         lua = { 'stylua' },
+        python = { 'ruff' },
+
         -- Conform can also run multiple formatters sequentially
         -- python = { "isort", "black" },
         --
@@ -856,6 +872,15 @@ require('lazy').setup({
         opts = {},
       },
       'folke/lazydev.nvim',
+      'saadparwaiz1/cmp_luasnip',
+
+      -- Adds other completion capabilities.
+      --  nvim-cmp does not ship with all sources by default. They are split
+      --  into multiple repos for maintenance purposes.
+      'hrsh7th/cmp-nvim-lsp',
+      'hrsh7th/cmp-buffer',
+      'hrsh7th/cmp-path',
+      'hrsh7th/cmp-nvim-lsp-signature-help',
     },
     --- @module 'blink.cmp'
     --- @type blink.cmp.Config
@@ -921,6 +946,30 @@ require('lazy').setup({
       -- Shows a signature help window while you type arguments for a function
       signature = { enabled = true },
     },
+        sources = {
+          {
+            name = 'lazydev',
+            -- set group index to 0 to skip loading LuaLS completions as lazydev recommends it
+            group_index = 0,
+          },
+          { name = 'nvim_lsp' },
+          { name = 'buffer' },
+          { name = 'path' },
+          { name = 'nvim_lsp_signature_help' },
+          { name = 'luasnip' },
+        },
+      }
+    end,
+  },
+
+  -- GitHub Copilot
+  'github/copilot.vim',
+
+  { -- NERDtree
+    'preservim/nerdtree',
+    config = function()
+      vim.keymap.set({ 'n', 'i' }, '<C-;>', ':NERDTreeToggle<CR>')
+    end,
   },
 
   { -- You can easily change to a different colorscheme.
@@ -944,12 +993,9 @@ require('lazy').setup({
       vim.cmd.colorscheme 'tokyonight-night'
     end,
   },
-  {
-    'mofiqul/vscode.nvim',
-  },
-  {
-    'projekt0n/github-nvim-theme',
-  },
+  'projekt0n/github-nvim-theme',
+  'mofiqul/vscode.nvim',
+  'askfiy/visual_studio_code',
 
   -- Highlight todo, notes, etc in comments
   { 'folke/todo-comments.nvim', event = 'VimEnter', dependencies = { 'nvim-lua/plenary.nvim' }, opts = { signs = false } },
@@ -1063,6 +1109,22 @@ require('lazy').setup({
       lazy = '💤 ',
     },
   },
+})
+
+-- use goimports to format files
+vim.g.go_fmt_command = 'goimports'
+vim.api.nvim_create_autocmd('BufWritePre', {
+  desc = 'go-format-and-import',
+  pattern = { '*.go' },
+  group = vim.api.nvim_create_augroup('RunGoImports', { clear = true }),
+  callback = function()
+    vim.lsp.buf.code_action {
+      apply = true,
+      context = {
+        only = { 'source.organizeImports' },
+      },
+    }
+  end,
 })
 
 -- The line beneath this is called `modeline`. See `:help modeline`
