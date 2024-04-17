@@ -920,15 +920,25 @@ require('lazy').setup({
       -- Load the colorscheme here.
       -- Like many other themes, this one has different styles, and you could load
       -- any other, such as 'tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'.
-      vim.cmd.colorscheme 'rochacon'
+      -- vim.cmd.colorscheme 'rochacon'
 
       -- You can configure highlights by doing something like:
-      vim.cmd.hi 'Comment gui=none'
+      -- vim.cmd.hi 'Comment gui=none'
     end,
   },
   'projekt0n/github-nvim-theme',
-  'mofiqul/vscode.nvim',
-  'askfiy/visual_studio_code',
+  'LunarVim/darkplus.nvim',
+  {
+    'shaunsingh/nord.nvim',
+    config = function()
+      vim.g.nord_disable_background = true
+      vim.g.nord_bold = false
+      vim.g.nord_italic = false
+    end,
+    init = function()
+      vim.cmd.colorscheme 'nord'
+    end,
+  },
 
   -- Highlight todo, notes, etc in comments
   { 'folke/todo-comments.nvim', event = 'VimEnter', dependencies = { 'nvim-lua/plenary.nvim' }, opts = { signs = false } },
