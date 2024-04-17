@@ -989,12 +989,7 @@ require('lazy').setup({
   'projekt0n/github-nvim-theme',
   'LunarVim/darkplus.nvim',
   {
-    'shaunsingh/nord.nvim',
-    config = function()
-      vim.g.nord_disable_background = true
-      vim.g.nord_bold = false
-      vim.g.nord_italic = false
-    end,
+    'nordtheme/vim',
     init = function()
       vim.cmd.colorscheme 'nord'
     end,
