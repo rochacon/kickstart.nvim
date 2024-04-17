@@ -994,8 +994,18 @@ require('lazy').setup({
     end,
   },
   'projekt0n/github-nvim-theme',
-  'mofiqul/vscode.nvim',
-  'askfiy/visual_studio_code',
+  'LunarVim/darkplus.nvim',
+  {
+    'shaunsingh/nord.nvim',
+    config = function()
+      vim.g.nord_disable_background = true
+      vim.g.nord_bold = false
+      vim.g.nord_italic = false
+    end,
+    init = function()
+      vim.cmd.colorscheme 'nord'
+    end,
+  },
 
   -- Highlight todo, notes, etc in comments
   { 'folke/todo-comments.nvim', event = 'VimEnter', dependencies = { 'nvim-lua/plenary.nvim' }, opts = { signs = false } },
