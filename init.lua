@@ -293,6 +293,7 @@ require('lazy').setup({
       vim.keymap.set('n', '<leader>gl', ':Git log<CR>')
       vim.keymap.set('n', '<leader>gs', ':Git status<CR>')
       vim.keymap.set('n', '<leader>p', ':Git pull --rebase<CR>')
+      vim.keymap.set('n', '<leader>pp', ':Git sync<CR>')
       vim.keymap.set('n', '<leader>P', ':Git push<CR>')
       vim.keymap.set('n', '<leader>Pu', ':Git push -u origin ')
     end,
