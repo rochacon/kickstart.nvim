@@ -159,6 +159,9 @@ vim.o.splitbelow = true
 -- vim.o.list = true
 -- vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
 
+-- fix EOL
+vim.opt.fixendofline = true
+
 -- trim whitespace
 vim.api.nvim_create_autocmd('BufWritePre', {
   desc = 'trim whitespace',
