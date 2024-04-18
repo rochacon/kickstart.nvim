@@ -126,7 +126,7 @@ vim.o.breakindent = true
 
 -- Enable code folding
 vim.opt.foldmethod = 'indent'
-vim.opt.foldlevelstart = 10
+vim.opt.foldlevelstart = 9
 
 -- Save undo history
 vim.o.undofile = true
@@ -1007,6 +1007,7 @@ require('lazy').setup({
     init = function()
       vim.cmd.colorscheme 'nord'
       vim.cmd.hi 'Folded ctermbg=none guibg=none'
+      vim.cmd.hi 'Visual ctermfg=black ctermbg=229'
     end,
   },
 
