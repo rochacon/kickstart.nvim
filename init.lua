@@ -939,6 +939,7 @@ require('lazy').setup({
     'nordtheme/vim',
     init = function()
       vim.cmd.colorscheme 'nord'
+      vim.cmd.hi 'Folded ctermbg=none guibg=none'
     end,
   },
 
