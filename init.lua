@@ -126,7 +126,7 @@ vim.opt.breakindent = true
 
 -- Enable code folding
 vim.opt.foldmethod = 'indent'
-vim.opt.foldlevelstart = 4
+vim.opt.foldlevelstart = 10
 
 -- Save undo history
 vim.opt.undofile = true
@@ -273,7 +273,10 @@ require('lazy').setup({
     config = function()
       vim.keymap.set('n', '<leader>ga', ':Git add -p<CR>')
       vim.keymap.set('n', '<leader>gc', ':Git commit -s -S -v<CR>')
-      vim.keymap.set('n', '<leader>gd', ':Gdiff<CR>')
+      vim.keymap.set('n', '<leader>gd', ':Git diff<CR>')
+      vim.keymap.set('n', '<leader>gg', ':Git<CR>')
+      vim.keymap.set('n', '<leader>gb', ':Git blame<CR>')
+      vim.keymap.set('n', '<leader>gl', ':Git log<CR>')
       vim.keymap.set('n', '<leader>gs', ':Git status<CR>')
       vim.keymap.set('n', '<leader>p', ':Git pull --rebase<CR>')
       vim.keymap.set('n', '<leader>P', ':Git push<CR>')
