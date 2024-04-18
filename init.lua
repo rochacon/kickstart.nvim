@@ -152,6 +152,9 @@ vim.opt.splitbelow = true
 -- vim.opt.list = true
 -- vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
 
+-- default tabstop
+vim.opt.tabstop = 4
+
 -- fix EOL
 vim.opt.fixendofline = true
 
@@ -269,7 +272,7 @@ require('lazy').setup({
       vim.keymap.set('n', '<leader>gl', ':Git log<CR>')
       vim.keymap.set('n', '<leader>gs', ':Git status<CR>')
       vim.keymap.set('n', '<leader>p', ':Git pull --rebase<CR>')
-      vim.keymap.set('n', '<leader>pp', ':Git sync<CR>')
+      vim.keymap.set('n', '<leader>pp', ':Git pp<CR>')
       vim.keymap.set('n', '<leader>P', ':Git push<CR>')
       vim.keymap.set('n', '<leader>Pu', ':Git push -u origin ')
     end,
