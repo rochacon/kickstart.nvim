@@ -100,6 +100,7 @@ vim.g.have_nerd_font = false
 
 -- syntax highlighting
 vim.opt.syntax = 'on'
+vim.opt.termguicolors = false
 
 -- Make line numbers default
 vim.opt.number = true
@@ -211,6 +212,7 @@ vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagn
 -- NOTE: This won't work in all terminal emulators/tmux/etc. Try your own mapping
 -- or just use <C-\><C-n> to exit terminal mode
 vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
+vim.keymap.set('t', '<C-q>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
 
 -- TIP: Disable arrow keys in normal mode
 -- vim.keymap.set('n', '<left>', '<cmd>echo "Use h to move!!"<CR>')
@@ -732,11 +734,16 @@ require('lazy').setup({
         -- ts_ls = {},
         --
         clangd = {},
+        denols = {},
         dockerls = {},
         gopls = {},
         helm_ls = {},
         html = {},
-        intelephense = {}, -- PHP
+        intelephense = {
+          on_init = function(client)
+            client.server_capabilities.documentFormattingProvider = false
+          end,
+        }, -- PHP
         jsonls = {},
         ruff_lsp = {}, -- Python
         rust_analyzer = {},
@@ -793,6 +800,16 @@ require('lazy').setup({
             -- certain features of an LSP (for example, turning off formatting for ts_ls)
             server.capabilities = vim.tbl_deep_extend('force', {}, capabilities, server.capabilities or {})
             require('lspconfig')[server_name].setup(server)
+
+            local nvim_lsp = require 'lspconfig'
+            nvim_lsp.denols.setup {
+              root_dir = nvim_lsp.util.root_pattern('deno.json', 'deno.jsonc'),
+            }
+
+            nvim_lsp.tsserver.setup {
+              root_dir = nvim_lsp.util.root_pattern 'package.json',
+              single_file_support = false,
+            }
           end,
         },
       }
@@ -971,7 +988,7 @@ require('lazy').setup({
   { -- NERDtree
     'preservim/nerdtree',
     config = function()
-      vim.keymap.set({ 'n', 'i' }, '<C-;>', ':NERDTreeToggle<CR>')
+      vim.keymap.set({ 'n', 'i' }, '<C-e>', ':NERDTreeToggle<CR>')
     end,
   },
 
