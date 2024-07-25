@@ -867,7 +867,7 @@ require('lazy').setup({
   },
 
   -- GitHub Copilot
-  'github/copilot.vim',
+  -- 'github/copilot.vim',
 
   { -- NERDtree
     'preservim/nerdtree',
