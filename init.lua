@@ -932,7 +932,7 @@ require('lazy').setup({
   { -- NERDtree
     'preservim/nerdtree',
     config = function()
-      vim.keymap.set({ 'n', 'i' }, '<C-e>', ':NERDTreeToggle<CR>')
+      vim.keymap.set('n', '<C-e>', ':NERDTreeToggle<CR>')
     end,
   },
 
