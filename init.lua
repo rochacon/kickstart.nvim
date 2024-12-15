@@ -250,6 +250,13 @@ vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper win
 -- vim.keymap.set("n", "<C-S-j>", "<C-w>J", { desc = "Move window to the lower" })
 -- vim.keymap.set("n", "<C-S-k>", "<C-w>K", { desc = "Move window to the upper" })
 
+-- New vertical split
+vim.keymap.set('n', '<C-\\>', '<cmd>vnew<CR>', { desc = 'Split vertical' })
+
+-- Close
+vim.keymap.set('n', '<C-q>', '<cmd>q<CR>', { desc = 'Close buffer' })
+>>>>>>> 9fb4115 (add vertical split and quit shortcuts)
+
 -- PageUp and PageDown are centered
 vim.keymap.set({ 'n', 'v', 'i' }, '<PageDown>', '<PageDown>zz')
 vim.keymap.set({ 'n', 'v', 'i' }, '<PageUp>', '<PageUp>zz')
