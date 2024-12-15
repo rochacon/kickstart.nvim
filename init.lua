@@ -108,6 +108,11 @@ vim.o.number = true
 --  Experiment for yourself to see if you like it!
 -- vim.o.relativenumber = true
 
+-- Disable fill chars
+vim.opt.fillchars = {
+  eob = ' ',
+}
+
 -- Enable mouse mode, can be useful for resizing splits for example!
 vim.o.mouse = 'a'
 
@@ -181,6 +186,10 @@ vim.o.cursorline = true
 
 -- Minimal number of screen lines to keep above and below the cursor.
 vim.o.scrolloff = 15
+vim.opt.cursorline = true
+
+-- Minimal number of screen lines to keep above and below the cursor.
+vim.opt.scrolloff = 25
 
 -- if performing an operation that would fail due to unsaved changes in the buffer (like `:q`),
 -- instead raise a dialog asking if you wish to save the current file(s)
@@ -753,7 +762,7 @@ require('lazy').setup({
           end,
         }, -- PHP
         jsonls = {},
-        ruff_lsp = {}, -- Python
+        ruff = {}, -- Python
         rust_analyzer = {},
         terraformls = {},
         ts_ls = {},
