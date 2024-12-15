@@ -187,6 +187,7 @@ vim.o.cursorline = true
 -- Minimal number of screen lines to keep above and below the cursor.
 vim.o.scrolloff = 15
 vim.opt.cursorline = true
+vim.opt.cursorlineopt = 'number'
 
 -- Minimal number of screen lines to keep above and below the cursor.
 vim.opt.scrolloff = 25
