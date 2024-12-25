@@ -760,7 +760,7 @@ require('lazy').setup({
         ruff = {}, -- Python
         rust_analyzer = {},
         terraformls = {},
-        tsserver = {},
+        ts_ls = {},
         yamlls = {},
         vimls = {},
         zls = {}, -- Zig
@@ -817,7 +817,7 @@ require('lazy').setup({
             nvim_lsp.denols.setup {
               root_dir = nvim_lsp.util.root_pattern('deno.json', 'deno.jsonc'),
             }
-            nvim_lsp.tsserver.setup {
+            nvim_lsp.ts_ls.setup {
               root_dir = nvim_lsp.util.root_pattern 'package.json',
               single_file_support = false,
             }
