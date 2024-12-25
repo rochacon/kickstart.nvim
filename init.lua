@@ -1044,6 +1044,7 @@ require('lazy').setup({
       vim.cmd.colorscheme 'nord'
       vim.cmd.hi 'Folded ctermbg=none guibg=none'
       vim.cmd.hi 'Visual ctermfg=black ctermbg=229'
+      vim.cmd.hi 'LineNr ctermfg=235'
     end,
   },
 
