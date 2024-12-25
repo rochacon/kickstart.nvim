@@ -24,7 +24,7 @@ hi ErrorMsg term=NONE cterm=NONE ctermfg=fg ctermbg=52 gui=NONE guifg=fg guibg=#
 hi FoldColumn term=NONE cterm=NONE ctermfg=242 ctermbg=NONE gui=NONE guifg=#6C6C6C guibg=NONE
 hi Folded term=NONE cterm=NONE ctermfg=242 ctermbg=NONE gui=NONE guifg=#6C6C6C guibg=NONE
 hi IncSearch term=NONE cterm=NONE ctermfg=black ctermbg=green gui=NONE guifg=black guibg=green
-hi LineNr term=NONE cterm=NONE ctermfg=240 ctermbg=NONE gui=NONE guifg=#808080 guibg=NONE
+hi LineNr term=NONE cterm=NONE ctermfg=235 ctermbg=NONE gui=NONE guifg=#808080 guibg=NONE
 hi MatchParen term=NONE cterm=NONE ctermfg=white ctermbg=244 gui=NONE guifg=#ffffff guibg=#000080
 hi Menu term=NONE cterm=NONE ctermfg=NONE ctermbg=NONE gui=NONE guifg=NONE guibg=NONE
 hi ModeMsg term=NONE cterm=NONE ctermfg=69 ctermbg=NONE gui=NONE guifg=#5F87FF guibg=NONE
