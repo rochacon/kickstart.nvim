@@ -308,7 +308,7 @@ require('lazy').setup({
     'tpope/vim-fugitive',
     config = function()
       vim.keymap.set('n', '<leader>ga', ':Git add -p<CR>')
-      vim.keymap.set('n', '<leader>gc', ':Git commit -s -S -v<CR>')
+      vim.keymap.set('n', '<leader>gc', ':Git commit -S -v<CR>')
       vim.keymap.set('n', '<leader>gd', ':Git diff<CR>')
       vim.keymap.set('n', '<leader>gg', ':Git<CR>')
       vim.keymap.set('n', '<leader>gb', ':Git blame<CR>')
@@ -861,7 +861,8 @@ require('lazy').setup({
         -- Disable "format_on_save lsp_fallback" for languages that don't
         -- have a well standardized coding style. You can add additional
         -- languages here or re-enable it for the disabled ones.
-        local disable_filetypes = { c = true, cpp = true }
+        local disable_filetypes = { c = true, cpp = true, php = true }
+        local lsp_format_opt
         if disable_filetypes[vim.bo[bufnr].filetype] then
           return nil
         else
