@@ -1050,7 +1050,7 @@ require('lazy').setup({
       -- Load the colorscheme here.
       -- Like many other themes, this one has different styles, and you could load
       -- any other, such as 'tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'.
-      vim.cmd.colorscheme 'tokyonight-night'
+      -- vim.cmd.colorscheme 'tokyonight-night'
     end,
   },
   'projekt0n/github-nvim-theme',
@@ -1058,10 +1058,10 @@ require('lazy').setup({
   {
     'nordtheme/vim',
     init = function()
-      -- vim.cmd.colorscheme 'nord'
+      vim.cmd.colorscheme 'nord'
       -- vim.cmd.hi 'Folded ctermbg=none guibg=none'
-      -- vim.cmd.hi 'Visual ctermfg=black ctermbg=229'
       -- vim.cmd.hi 'LineNr ctermfg=235'
+      vim.cmd.hi 'Visual ctermfg=black ctermbg=2'
     end,
   },
 

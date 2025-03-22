@@ -25,8 +25,8 @@ return {
       )
 
       -- rochacon colorscheme
-      vim.cmd.colorscheme 'rochacon'
-      vim.cmd.hi 'Comment gui=none'
+      -- vim.cmd.colorscheme 'rochacon'
+      -- vim.cmd.hi 'Comment gui=none'
     end,
   },
 }
