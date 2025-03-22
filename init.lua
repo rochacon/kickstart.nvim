@@ -493,6 +493,21 @@ require('lazy').setup({
             require('telescope.themes').get_dropdown(),
           },
         },
+        pickers = {
+          find_files = {
+            hidden = true,
+          },
+        },
+        vimgrep_arguments = {
+          'rg',
+          '--color=never',
+          '--column',
+          '--line-number',
+          '--no-heading',
+          '--smart-case',
+          '--with-filename',
+          '-u', -- thats the new thing
+        },
       }
 
       -- Enable Telescope extensions if they are installed
@@ -771,7 +786,7 @@ require('lazy').setup({
           end,
         }, -- PHP
         jsonls = {},
-        ruff = {}, -- Python
+        pylsp = {}, -- Python
         rust_analyzer = {},
         terraformls = {},
         ts_ls = {},
@@ -1043,10 +1058,10 @@ require('lazy').setup({
   {
     'nordtheme/vim',
     init = function()
-      vim.cmd.colorscheme 'nord'
-      vim.cmd.hi 'Folded ctermbg=none guibg=none'
-      vim.cmd.hi 'Visual ctermfg=black ctermbg=229'
-      vim.cmd.hi 'LineNr ctermfg=235'
+      -- vim.cmd.colorscheme 'nord'
+      -- vim.cmd.hi 'Folded ctermbg=none guibg=none'
+      -- vim.cmd.hi 'Visual ctermfg=black ctermbg=229'
+      -- vim.cmd.hi 'LineNr ctermfg=235'
     end,
   },
 
