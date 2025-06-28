@@ -183,14 +183,10 @@ vim.o.inccommand = 'split'
 
 -- Show which line your cursor is on
 vim.o.cursorline = true
+vim.o.cursorlineopt = 'number'
 
 -- Minimal number of screen lines to keep above and below the cursor.
-vim.o.scrolloff = 15
-vim.opt.cursorline = true
-vim.opt.cursorlineopt = 'number'
-
--- Minimal number of screen lines to keep above and below the cursor.
-vim.opt.scrolloff = 25
+vim.o.scrolloff = 20
 
 -- if performing an operation that would fail due to unsaved changes in the buffer (like `:q`),
 -- instead raise a dialog asking if you wish to save the current file(s)
@@ -302,25 +298,7 @@ rtp:prepend(lazypath)
 -- NOTE: Here is where you install your plugins.
 require('lazy').setup({
   -- NOTE: Plugins can be added with a link (or for a github repo: 'owner/repo' link).
-
-  { -- fugitive git frontend
-    'tpope/vim-fugitive',
-    config = function()
-      vim.keymap.set('n', '<leader>ga', ':Git add -p<CR>')
-      vim.keymap.set('n', '<leader>gc', ':Git commit -S -v<CR>')
-      vim.keymap.set('n', '<leader>gd', ':Git diff<CR>')
-      vim.keymap.set('n', '<leader>gg', ':Git<CR>')
-      vim.keymap.set('n', '<leader>gb', ':Git blame<CR>')
-      vim.keymap.set('n', '<leader>gl', ':Git log<CR>')
-      vim.keymap.set('n', '<leader>gs', ':Git status<CR>')
-      vim.keymap.set('n', '<leader>p', ':Git pull --rebase<CR>')
-      vim.keymap.set('n', '<leader>pp', ':Git pp<CR>')
-      vim.keymap.set('n', '<leader>P', ':Git push<CR>')
-      vim.keymap.set('n', '<leader>Pu', ':Git push -u origin ')
-    end,
-  },
-
-  'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically
+  'NMAC427/guess-indent.nvim', -- Detect tabstop and shiftwidth automatically
 
   -- NOTE: Plugins can also be added by using a table,
   -- with the first argument being the link and the following
@@ -876,7 +854,6 @@ require('lazy').setup({
         -- have a well standardized coding style. You can add additional
         -- languages here or re-enable it for the disabled ones.
         local disable_filetypes = { c = true, cpp = true, php = true }
-        local lsp_format_opt
         if disable_filetypes[vim.bo[bufnr].filetype] then
           return nil
         else
@@ -931,15 +908,6 @@ require('lazy').setup({
         opts = {},
       },
       'folke/lazydev.nvim',
-      'saadparwaiz1/cmp_luasnip',
-
-      -- Adds other completion capabilities.
-      --  nvim-cmp does not ship with all sources by default. They are split
-      --  into multiple repos for maintenance purposes.
-      'hrsh7th/cmp-nvim-lsp',
-      'hrsh7th/cmp-buffer',
-      'hrsh7th/cmp-path',
-      'hrsh7th/cmp-nvim-lsp-signature-help',
     },
     --- @module 'blink.cmp'
     --- @type blink.cmp.Config
@@ -985,7 +953,8 @@ require('lazy').setup({
       },
 
       sources = {
-        default = { 'lsp', 'path', 'snippets', 'lazydev' },
+        default = { 'lsp', 'buffer', 'path', 'snippets', 'lazydev' },
+
         providers = {
           lazydev = { module = 'lazydev.integrations.blink', score_offset = 100 },
         },
@@ -1005,30 +974,6 @@ require('lazy').setup({
       -- Shows a signature help window while you type arguments for a function
       signature = { enabled = true },
     },
-        sources = {
-          {
-            name = 'lazydev',
-            -- set group index to 0 to skip loading LuaLS completions as lazydev recommends it
-            group_index = 0,
-          },
-          { name = 'nvim_lsp' },
-          { name = 'buffer' },
-          { name = 'path' },
-          { name = 'nvim_lsp_signature_help' },
-          { name = 'luasnip' },
-        },
-      }
-    end,
-  },
-
-  -- GitHub Copilot
-  -- 'github/copilot.vim',
-
-  { -- NERDtree
-    'preservim/nerdtree',
-    config = function()
-      vim.keymap.set('n', '<C-e>', ':NERDTreeToggle<CR>')
-    end,
   },
 
   { -- You can easily change to a different colorscheme.
@@ -1050,17 +995,6 @@ require('lazy').setup({
       -- Like many other themes, this one has different styles, and you could load
       -- any other, such as 'tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'.
       -- vim.cmd.colorscheme 'tokyonight-night'
-    end,
-  },
-  'projekt0n/github-nvim-theme',
-  'LunarVim/darkplus.nvim',
-  {
-    'nordtheme/vim',
-    init = function()
-      vim.cmd.colorscheme 'nord'
-      -- vim.cmd.hi 'Folded ctermbg=none guibg=none'
-      -- vim.cmd.hi 'LineNr ctermfg=235'
-      vim.cmd.hi 'Visual ctermfg=black ctermbg=2'
     end,
   },
 
