@@ -255,7 +255,6 @@ vim.keymap.set('n', '<C-\\>', '<cmd>vnew<CR>', { desc = 'Split vertical' })
 
 -- Close
 vim.keymap.set('n', '<C-q>', '<cmd>q<CR>', { desc = 'Close buffer' })
->>>>>>> 9fb4115 (add vertical split and quit shortcuts)
 
 -- PageUp and PageDown are centered
 vim.keymap.set({ 'n', 'v', 'i' }, '<PageDown>', '<PageDown>zz')
