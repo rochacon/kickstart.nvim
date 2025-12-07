@@ -100,7 +100,7 @@ vim.g.have_nerd_font = false
 
 -- syntax highlighting
 vim.opt.syntax = 'on'
-vim.opt.termguicolors = false
+vim.opt.termguicolors = true
 
 -- Make line numbers default
 vim.o.number = true
