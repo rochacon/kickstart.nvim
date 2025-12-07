@@ -196,8 +196,9 @@ vim.o.confirm = true
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
 
--- Save with CTRL+s
+-- Save with CTRL+s and Space+w
 vim.keymap.set({ 'i', 'n' }, '<C-s>', '<cmd>w<CR>')
+vim.keymap.set({ 'i', 'n' }, '<leader>w', '<cmd>w<CR>')
 
 -- Easy tabs
 vim.keymap.set({ 'i', 'n' }, '<C-t>', '<cmd>:tabnew<CR>')
