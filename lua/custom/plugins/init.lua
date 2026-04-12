@@ -44,7 +44,7 @@ vim.keymap.set({ 'n', 'v', 'i' }, '<PageUp>', '<PageUp>zz')
 
 -- Save with CTRL+s and Space+w
 vim.keymap.set({ 'i', 'n' }, '<C-s>', '<cmd>w<CR>')
-vim.keymap.set({ 'i', 'n' }, '<leader>w', '<cmd>w<CR>')
+vim.keymap.set({ 'n' }, '<leader>w', '<cmd>w<CR>')
 
 -- Easy tabs
 vim.keymap.set({ 'i', 'n' }, '<C-t>', '<cmd>:tabnew<CR>')
