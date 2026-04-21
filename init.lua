@@ -633,9 +633,12 @@ require('lazy').setup({
         -- But for many setups, the LSP (`ts_ls`) will work just fine
         -- ts_ls = {},
         -- NOTE(rochacon) added
+        buf = {},
         clangd = {},
+        delve = {},
         denols = {},
         dockerls = {},
+        gh = {},
         gopls = {},
         helm_ls = {},
         html = {},
@@ -645,12 +648,13 @@ require('lazy').setup({
         jsonls = {},
         pylsp = {}, -- Python
         rust_analyzer = {},
-        terraformls = {},
+        tofu_ls = {},
         ts_ls = {},
         yamlls = {},
         vimls = {},
         zls = {}, -- Zig
         zk = {}, -- Markdown
+        yq = {},
 
         stylua = {}, -- Used to format Lua code
 
